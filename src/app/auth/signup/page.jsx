@@ -11,7 +11,8 @@ const SignupPage = () => {
         const userData = Object.fromEntries(formData.entries());
 
         const { data, error } = await authClient.signUp.email({
-            ...userData
+            ...userData,
+            callbackURL: '/'
         })
 
         console.log('signUp response: ', { data, error })
@@ -51,7 +52,7 @@ const SignupPage = () => {
                     }}
                 >
                     <Label>Email</Label>
-                    <Input  name="email" placeholder="john@example.com" />
+                    <Input name="email" placeholder="john@example.com" />
                     <FieldError />
                 </TextField>
                 <TextField
