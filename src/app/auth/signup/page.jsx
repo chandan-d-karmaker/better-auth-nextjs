@@ -4,17 +4,17 @@ import { Check } from "@gravity-ui/icons";
 import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
 import { authClient } from '@/lib/auth-client';
 
-const SignupPage =  () => {
+const SignupPage = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const userData = Object.fromEntries(formData.entries());
 
         const { data, error } = await authClient.signUp.email({
-            userData
+            ...userData
         })
 
-        console.log('signUp response: ', {data, error})
+        console.log('signUp response: ', { data, error })
     };
     return (
         <div className='flex justify-center items-center'>
@@ -35,7 +35,8 @@ const SignupPage =  () => {
                     }}
                 >
                     <Label>Name</Label>
-                    <Input placeholder="Enter your name" />
+                    <Input name="name"
+                        placeholder="Enter your name" />
                     <FieldError />
                 </TextField>
                 <TextField
@@ -50,7 +51,7 @@ const SignupPage =  () => {
                     }}
                 >
                     <Label>Email</Label>
-                    <Input placeholder="john@example.com" />
+                    <Input  name="email" placeholder="john@example.com" />
                     <FieldError />
                 </TextField>
                 <TextField
@@ -72,7 +73,7 @@ const SignupPage =  () => {
                     }}
                 >
                     <Label>Password</Label>
-                    <Input placeholder="Enter your password" />
+                    <Input name="password" placeholder="Enter your password" />
                     <Description>Must be at least 8 characters with 1 uppercase and 1 number</Description>
                     <FieldError />
                 </TextField>
