@@ -1,6 +1,21 @@
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
 import React from 'react';
 
-const DashboardPage = () => {
+const DashboardPage = async () => {
+
+    const session = await auth.api.getSession({
+        headers: await headers()
+    });
+
+    // console.log('session in dashboard', session);
+    const user = session?.user;
+
+    if(!user){
+        return <div>
+            <h2>Please login to access dashboard</h2>
+        </div>
+    }
     return (
         <div>
             <div

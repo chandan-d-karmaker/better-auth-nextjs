@@ -23,7 +23,7 @@ const Navbar = () => {
         )
     }
 
-    console.log("Session user: ", data);
+    // console.log("Session user: ", data);
     const user = data?.user;
 
     return (
@@ -65,15 +65,19 @@ const Navbar = () => {
                 </div>
                 <div>{user ? <>Welcome {user.name}</> : <></>}</div>
                 <ul className="hidden items-center gap-4 md:flex">
-                    {user ? <li> <Link href='/' onClick={()=> signOut() }>Sign Out</Link></li> : <>
+                    {user ? <li> <Link href='/' onClick={() => signOut()}>Sign Out</Link></li> : <>
                         <li>
                             <Link href="/auth/signup">SignUp</Link>
                         </li>
                         <li>
                             <Link href="/auth/login">LogIN</Link>
                         </li>
+                        <li>
+                            <Link href='/dashboard'>Dashboard</Link>
+                        </li>
 
                     </>}
+
 
                 </ul>
             </header>
