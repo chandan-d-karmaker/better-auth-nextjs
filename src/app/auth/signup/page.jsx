@@ -12,7 +12,7 @@ const SignupPage = () => {
 
         const { data, error } = await authClient.signUp.email({
             ...userData,
-            callbackURL: '/'
+            callbackURL: '/',
         })
 
         console.log('signUp response: ', { data, error })
